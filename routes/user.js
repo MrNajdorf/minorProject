@@ -22,7 +22,7 @@ router.post('/signup', async (req, res) => {
             res.send("Only Parul University emails can sign up")
             return
         }
-        const user = new User({ name, username, role: Role.admin })
+        const user = new User({ name, username, role: Role.student })
         console.log(user)
         await User.register(user, password)
         res.send("User created")

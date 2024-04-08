@@ -8,7 +8,7 @@ const Post = require('../models/post');
 const Thread = require('../models/thread');
 const User = require('../models/user');
 
-router.get('/post', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const posts = await Post.find()
         res.json(posts)
@@ -17,7 +17,7 @@ router.get('/post', async (req, res) => {
     }
 })
 
-router.get('/post/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params
         const post = await Post.findById(id)
@@ -32,7 +32,7 @@ router.get('/post/:id', async (req, res) => {
 })
 
 
-router.post('/post/:id', isLoggedIn, wrapAsync(async (req, res) => {
+router.post('/', isLoggedIn, wrapAsync(async (req, res) => {
     try {
         const { content } = req.body
         const user = res.locals.currentUser
